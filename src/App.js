@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/Header";
+// for redux
+import { Provider } from "react-redux";
+import store from "./store";
+
+import Router from "./config/router";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <header className="App-header">
+          <Header />
+          <Router />
+        </header>
+      </div>
+    </Provider>
   );
 }
 
 export default App;
+
+// React Router Dom
+// 1. Basic Routing
+//   a) make router.js file in config
+//   b) import createBrowserRouter and RouterProvider from react-router-dom
+//   c) use createBrowserRouter and Defines path with element(component), store in const router
+//   d) return RouterProvider with router as prop
+
+// 2. Programmatically Routing (through Button)
+//    a) import useNavigate from react-router-dom
+//    b) const navigate = useNavigate()
+//    c) call by using, navigate("/about")
